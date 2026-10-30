@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXORA AI — One Platform. Infinite Possibilities.</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="authView" class="auth-wrap">
+  <div class="auth-card">
+    <div class="brand-mark">N</div><h1>NEXORA <span>AI</span></h1>
+    <p class="muted">One Platform. Infinite Possibilities.</p>
+    <div class="tabs"><button id="loginTab" class="tab active">Sign in</button><button id="signupTab" class="tab">Create account</button></div>
+    <form id="authForm">
+      <label id="nameLabel" class="hidden">Full name<input id="name" autocomplete="name"></label>
+      <label>Email<input id="email" type="email" required autocomplete="email"></label>
+      <label>Password<input id="password" type="password" required minlength="6" autocomplete="current-password"></label>
+      <button class="primary wide" type="submit" id="authSubmit">Sign in</button>
+    </form>
+    <p id="authMessage" class="notice"></p>
+    <small>New accounts start with the Student role. An administrator can promote verified users to Teacher or Admin.</small>
+  </div>
+</div>
+<div id="appView" class="app hidden">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">N</div><div><b>NEXORA AI</b><small>Intelligent workspace</small></div></div>
+    <div class="user-mini"><div class="avatar" id="avatar">U</div><div><b id="sideName">User</b><small id="sideRole">Student</small></div></div>
+    <nav id="nav">
+      <button class="nav-item active" data-page="overview">◫ <span>Overview</span></button>
+      <button class="nav-item" data-page="chat">✧ <span>AI Assistant</span></button>
+      <button class="nav-item" data-page="study">▤ <span>Study & Quiz</span></button>
+      <button class="nav-item" data-page="notes">▧ <span>My Notes</span></button>
+      <button class="nav-item" data-page="schedule">▦ <span>Timetable</span></button>
+      <button class="nav-item" data-page="files">▱ <span>Files</span></button>
+      <button class="nav-item hidden" id="adminNav" data-page="admin">⚙ <span>Administration</span></button>
+    </nav>
+    <button id="themeBtn" class="nav-item">◐ <span>Toggle theme</span></button>
+    <button id="logoutBtn" class="nav-item logout">↪ <span>Sign out</span></button>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow">YOUR PERSONAL AI WORKSPACE</p><h2 id="pageTitle">Overview</h2></div><div class="top-actions"><span class="status-dot">● Online</span><div class="avatar" id="topAvatar">U</div></div></header>
+    <section id="overviewPage" class="page">
+      <div class="welcome"><div><p class="eyebrow light">WELCOME BACK</p><h1 id="welcomeName">Hello there 👋</h1><p>Your ideas, learning and productivity — in one place.</p></div><div class="welcome-orb">✧</div></div>
+      <div class="stat-grid"><article class="stat"><span>✧</span><small>AI workspace</small><b>Ready to explore</b></article><article class="stat"><span>▧</span><small>Personal notes</small><b id="noteCount">0 saved</b></article><article class="stat"><span>◷</span><small>Today's date</small><b id="today"></b></article></div>
+      <div class="section-head"><div><p class="eyebrow">GET STARTED</p><h3>What would you like to do?</h3></div></div>
+      <div class="quick-grid">
+        <button class="quick-card" data-go="chat"><span class="quick-icon purple">✧</span><b>Ask NEXORA</b><small>Chat about anything</small><i>→</i></button>
+        <button class="quick-card" data-go="study"><span class="quick-icon blue">▤</span><b>Learn something</b><small>Explain, practise, quiz</small><i>→</i></button>
+        <button class="quick-card" data-go="notes"><span class="quick-icon green">▧</span><b>Write a note</b><small>Save your thoughts</small><i>→</i></button>
+        <button class="quick-card" data-go="files"><span class="quick-icon orange">▱</span><b>Upload a file</b><small>Keep learning resources</small><i>→</i></button>
+      </div>
+      <div class="panel"><p class="eyebrow">YOUR WORKSPACE</p><h3>Built for curious minds.</h3><p class="muted">Use the AI assistant for coding, education, maths, science, career guidance, writing and everyday questions. AI responses can be inaccurate, so verify important information.</p></div>
+    </section>
+    <section id="chatPage" class="page hidden">
+      <div class="chat-layout"><div class="chat-intro"><div class="quick-icon purple">✧</div><h2>How can I help you today?</h2><p class="muted">Ask anything. Continue the conversation with follow-up questions.</p><div class="prompt-chips"><button>Explain a difficult topic simply</button><button>Help me debug my code</button><button>Create a study plan</button></div></div>
+      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      <form id="chatForm" class="composer"><textarea id="chatInput" rows="1" placeholder="Message NEXORA AI..." required></textarea><div class="composer-bottom"><span>AI can make mistakes. Check important answers.</span><div><button type="button" id="voiceBtn" class="icon-btn" title="Voice input">🎙</button><button class="send-btn" type="submit">↑</button></div></div></form>
+      </div>
+    </section>
+    <section id="studyPage" class="page hidden"><div class="panel"><p class="eyebrow">LEARNING STUDIO</p><h3>Study & Quiz</h3><p class="muted">Generate practice questions and explanations with NEXORA AI.</p><label>Topic<input id="quizTopic" placeholder="e.g. Digital Electronics, Python loops"></label><label>Number of questions<select id="quizCount"><option>5</option><option>10</option><option>15</option></select></label><button class="primary" id="makeQuiz">Generate MCQ quiz</button><div id="quizArea"></div></div></section>
+    <section id="notesPage" class="page hidden"><div class="panel"><p class="eyebrow">PERSONAL KNOWLEDGE</p><h3>My Notes</h3><form id="noteForm"><label>Title<input id="noteTitle" required placeholder="Note title"></label><label>Content<textarea id="noteBody" rows="5" required placeholder="Write your notes..."></textarea></label><button class="primary">Save note</button></form><div id="notesList" class="notes-list"></div></div></section>
+    <section id="schedulePage" class="page hidden"><div class="panel"><p class="eyebrow">PLAN YOUR DAY</p><h3>Timetable</h3><p class="muted">Add your own schedule. Saved on this device.</p><form id="eventForm" class="inline-form"><input id="eventTime" type="time" required><input id="eventText" placeholder="Class / task" required><button class="primary">Add</button></form><div id="eventsList"></div></div></section>
+    <section id="filesPage" class="page hidden"><div class="panel"><p class="eyebrow">YOUR RESOURCES</p><h3>File uploads</h3><p class="muted">Upload PDF, image or text resources (maximum 10 MB by default).</p><form id="uploadForm"><input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.webp,.txt" required><button class="primary">Upload file</button></form><p id="uploadStatus" class="notice"></p><p class="small muted">Upload storage is private to the server. Automatic PDF/image understanding is not yet enabled; a document parser/vision service must be connected.</p></div></section>
+    <section id="adminPage" class="page hidden"><div class="panel"><p class="eyebrow">CONTROL CENTER</p><h3>User administration</h3><p class="muted">Only Admin-role accounts can access this section.</p><button class="primary" id="loadUsers">Load users</button><div id="usersList"></div></div></section>
+  </main>
+</div>
+<script type="module" src="app.js"></script>
+</body></html>
